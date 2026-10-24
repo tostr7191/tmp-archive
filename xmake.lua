@@ -35,6 +35,8 @@ else
 end
 
 add_requires("hopscotch-map", "minhook", "spdlog", "tiltedcore", "yaml-cpp")
+-- TiltedCore 0.2.9 calls mi_malloc_size. mimalloc 3.x still declares it and no longer defines it.
+add_requireconfs("**.mimalloc", {override = true, version = "2.2.4", configs = {rltgenrandom = true}})
 
 target("ArchiveXL")
     set_default(true)
